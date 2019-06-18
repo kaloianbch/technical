@@ -1,0 +1,21 @@
+#root{
+    background-color: #0b0e16;
+    color: #e7dfdd;
+    font-family: "Raleway SemiBold";
+    height:100vh;
+    position:relative;
+}
+#footer{
+    background-color: #e7dfdd;
+    color: #0b0e16;
+    font-size: 0.7rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.2rem;
+    position: absolute;
+    bottom:0px;
+    left: 0px;
+    right: 0px;
+}
+#gitHubLink{
+   color: #0b0e16;
+}
