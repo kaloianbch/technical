@@ -346,3 +346,5 @@ buck-out/
 .fakebuckversion
 
 # End of https://www.gitignore.io/api/jetbrains,reactnative
+.idea/encodings.xml
+.idea/misc.xml
