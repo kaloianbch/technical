@@ -14,6 +14,7 @@ class SearchBar extends Component {
         this.changeHandler = this.changeHandler.bind(this);
     }
     changeHandler(event){
+        event.preventDefault();
         this.setState({searchQuery: event.target.value});
     }
     keyHandler(pressed) {

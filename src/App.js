@@ -10,8 +10,8 @@ class App extends Component {
         super(props);
 
         this.state = {
-            missionList: null,
-            selectedMission: null,
+            missionList: null,      //list for storing API information
+            selectedMission: null,  //the selected list item as per the search
         };
         this.search = this.search.bind(this);
         this.getBody = this.getBody.bind(this);
@@ -34,6 +34,10 @@ class App extends Component {
     search(query){  //TODO - fully implement
         this.setState({selectedMission:Number(query)})
     }
+    /*
+        This method provides a loading indicator for the app while it fetches the API data
+        return: jsx main body of webapp
+     */
     getBody(){
         if(this.state.missionList !== null) {
             return <div id='appBody' className='container-fluid'>
@@ -44,6 +48,10 @@ class App extends Component {
                 <div id='loading' className='d-flex justify-content-center'> Fetching SpaceX info...</div></div>
         }
     }
+    /*
+        This adds an info card if the search query has retrieved a valid mission selection
+        return: jsx information card
+     */
     getCard(){
         if(this.state.selectedMission != null){
             return <InfoCard missionInfo={this.state.missionList[this.state.selectedMission]}/>
