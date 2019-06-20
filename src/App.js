@@ -10,13 +10,16 @@ class App extends Component {
         super(props);
 
         this.state = {
-            missionList: [],
-            isFetched: false,
+            missionList: null,
             selectedMission: null,
         };
-        this.search = this.search.bind(this)
+        this.search = this.search.bind(this);
+        this.getBody = this.getBody.bind(this);
+        this.getCard = this.getCard.bind(this);
     }
-
+    /*
+        On mounting the main App component it fetches the API information
+     */
     componentDidMount() {
         fetch('https://api.spacexdata.com/v3/launches')
             .then(response => response.json())
@@ -27,51 +30,40 @@ class App extends Component {
                 })
             })
     }
-    search(query){
+
+    search(query){  //TODO - fully implement
         this.setState({selectedMission:Number(query)})
     }
+    getBody(){
+        if(this.state.missionList !== null) {
+            return <div id='appBody' className='container-fluid'>
+                <SearchBar searchCallback={this.search}/> {this.getCard()}</div>
+        }
+        else {
+            return  <div id='appBody' className='container-fluid'>
+                <div id='loading' className='d-flex justify-content-center'> Fetching SpaceX info...</div></div>
+        }
+    }
+    getCard(){
+        if(this.state.selectedMission != null){
+            return <InfoCard missionInfo={this.state.missionList[this.state.selectedMission]}/>
+        }
+        else  {
+            return null
+        }
+    };
     render() {
-        let {isFetched, missionList, selectedMission} = this.state;
-        if(!isFetched){
-            return (
-                <div className='container-fluid'>
-                    <Banner/>
-                    <div id='appBody' className='container-fluid'>
-                        <div id='loading' className='d-flex justify-content-center'> Fetching SpaceX info...</div>
-                    </div>
-                    <footer id='footer' className='d-flex justify-content-center'>
-                        Brought to you by&nbsp;<a id='gitHubLink' href='http://github.com/kaloianbch/'>Kal</a>
-                    </footer>
+        return (
+            <div className='container-fluid'>
+                <Banner/>
+                <div id='appBody' className='container-fluid'>
+                    {this.getBody()}
                 </div>
-            );
-        }
-        else if(selectedMission !== null){
-            return (
-                <div className='container-fluid'>
-                    <Banner/>
-                    <div id='appBody' className='container-fluid'>
-                        <SearchBar searchCallback={this.search}/>
-                        <InfoCard missionInfo={missionList[selectedMission]}/>
-                    </div>
-                    <footer id='footer' className='d-flex justify-content-center'>
-                        Brought to you by&nbsp;<a id='gitHubLink' href='http://github.com/kaloianbch/'>Kal</a>
-                    </footer>
-                </div>
-            );
-        }
-        else{
-            return (
-                <div className='container-fluid'>
-                    <Banner/>
-                    <div id='appBody' className='container-fluid'>
-                        <SearchBar searchCallback={this.search}/>
-                    </div>
-                    <footer id='footer' className='d-flex justify-content-center'>
-                        Brought to you by&nbsp;<a id='gitHubLink' href='http://github.com/kaloianbch/'>Kal</a>
-                    </footer>
-                </div>
-            );
-        }
+                <footer id='footer' className='d-flex justify-content-center'>
+                    Brought to you by&nbsp;<a id='gitHubLink' href='http://github.com/kaloianbch/'>Kal</a>
+                </footer>
+            </div>
+        );
     }
 }
 
