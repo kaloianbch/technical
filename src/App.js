@@ -33,7 +33,7 @@ class App extends Component {
     }
 
     search(query){  //TODO - fully implement
-        this.setState({selectedMission:Number(query)})
+        this.setState({selectedMission: Number(query)})
     }
 
     /*
@@ -56,7 +56,7 @@ class App extends Component {
         return: jsx information card
      */
     getCard(){
-        if(this.state.selectedMission != null){
+        if(this.state.selectedMission !== null){
             return <InfoCard missionInfo={this.state.missionList[this.state.selectedMission]}/>
         }
         else  {
