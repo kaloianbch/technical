@@ -13,9 +13,9 @@ class App extends Component {
         super(props);
 
         this.state = {
-            selectedMission: null,  //the selected list item as per the missionSelect
+            selectedMission: undefined,  //the selected list item as per the missionSelect
         };
-        this.missionSelect = this.missionSelect.bind(this);
+        this.setSelectedMission = this.setSelectedMission.bind(this);
         this.getCard = this.getCard.bind(this);
     }
 
@@ -28,9 +28,9 @@ class App extends Component {
         return: jsx information card
      */
     getCard(){
-        if(this.state.selectedMission !== null){
+        if(this.state.selectedMission !== undefined){
             return <div>
-                <InfoCard missionInfo={this.state.selectedMission}/>
+                <InfoCard id='infoCard' missionInfo={this.state.selectedMission}/>
             </div>
         }
         else  {
@@ -44,7 +44,7 @@ class App extends Component {
                 <Banner/>
                 <div id='appBody' className='container-fluid'>
                     <div id='appBody' className='container-fluid'>
-                        <Filter filterCallback={this.missionSelect}/>{this.getCard()}
+                        <Filter filterCallback={this.setSelectedMission}/>{this.getCard()}
                     </div>
                 </div>
                 <footer id='footer' className='d-flex justify-content-center'>
