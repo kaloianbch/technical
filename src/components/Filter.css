@@ -1,3 +1,9 @@
+#loading{
+    font-size: 3em;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    text-align: center;
+}
 #filter{
     padding-top: 2em;
     padding-bottom: 2em;
@@ -9,4 +15,7 @@
     height: auto;
     max-height: 24rem;
     overflow-x: hidden;
+}
+#dropDownItem{
+border: #0b0e16 1rem
 }

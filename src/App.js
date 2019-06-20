@@ -19,8 +19,8 @@ class App extends Component {
         this.getCard = this.getCard.bind(this);
     }
 
-    missionSelect(missionId){   //TODO - remove if possible
-        this.setState({selectedMission: Number(missionId)});
+    setSelectedMission(missionInfo){
+        this.setState({selectedMission: missionInfo});
     }
 
     /*
@@ -30,7 +30,7 @@ class App extends Component {
     getCard(){
         if(this.state.selectedMission !== null){
             return <div>
-                <InfoCard missionInfo={this.state.missionList[this.state.selectedMission]}/>
+                <InfoCard missionInfo={this.state.selectedMission}/>
             </div>
         }
         else  {
@@ -44,7 +44,7 @@ class App extends Component {
                 <Banner/>
                 <div id='appBody' className='container-fluid'>
                     <div id='appBody' className='container-fluid'>
-                        <Filter searchCallback={this.missionSelect}/>{this.getCard()}
+                        <Filter filterCallback={this.missionSelect}/>{this.getCard()}
                     </div>
                 </div>
                 <footer id='footer' className='d-flex justify-content-center'>

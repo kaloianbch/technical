@@ -89,6 +89,8 @@ class Filter extends Component {
         };
         this.setFilterText = this.setFilterText.bind(this);
         this.getBody = this.getBody.bind(this);
+        this.getDropdownItems = this.getDropdownItems.bind(this);
+        this.passSelectedMission = this.passSelectedMission.bind(this);
     }
 
     /*
@@ -112,7 +114,16 @@ class Filter extends Component {
         Populates the Dropdown menu with items derived from the API list.
      */
     getDropdownItems(){
-        return <Dropdown.Item onClick={() => console.log('selected')}>Placeholder</Dropdown.Item>
+        return this.state.missionList.map((missionListItem) =>
+            <Dropdown.Item key={missionListItem.flight_number} onClick={() => this.passSelectedMission(missionListItem)}>
+                <div id='dropDownItem'className='container-fluid'>{missionListItem.mission_name}</div>
+            </Dropdown.Item>
+        );
+    }
+    passSelectedMission(missionInfo){
+        if(this.props.filterCallback !== undefined){
+            this.props.filterCallback(missionInfo);
+        }
     }
 
     /*
