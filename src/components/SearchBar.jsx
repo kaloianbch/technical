@@ -9,19 +9,23 @@ class SearchBar extends Component {
         this.state = {
             searchQuery: '',
         };
-        this.keyHandler = this.keyHandler.bind(this);
+        this.keyInputHandler = this.keyInputHandler.bind(this);
         this.callbackHandler = this.callbackHandler.bind(this);
-        this.changeHandler = this.changeHandler.bind(this);
+        this.searchBarInputHandler = this.searchBarInputHandler.bind(this);
     }
-    changeHandler(event){
+
+
+    searchBarInputHandler(event){
         event.preventDefault();
         this.setState({searchQuery: event.target.value});
     }
-    keyHandler(pressed) {
+
+    keyInputHandler(pressed) {
         if (pressed.key === 'Enter') {
             this.callbackHandler()
         }
     }
+
     callbackHandler(event){
         event.preventDefault();
         if(this.props.searchCallback !== undefined){
@@ -34,7 +38,7 @@ class SearchBar extends Component {
             <div className='d-flex justify-content-center'>
                 <div id='searchBar' className='input-group col-5'>
                     <input type='text' className='form-control' placeholder='Search...' value={this.state.searchQuery}
-                           onKeyUp={this.keyHandler} onChange={this.changeHandler}/>
+                           onKeyUp={this.keyInputHandler} onChange={this.searchBarInputHandler}/>
                     <button type='button' className='btn btn-light' id='searchButton' onClick={this.callbackHandler}>
                         <FontAwesomeIcon icon={faSearch}/>
                     </button>

@@ -17,6 +17,7 @@ class App extends Component {
         this.getBody = this.getBody.bind(this);
         this.getCard = this.getCard.bind(this);
     }
+
     /*
         On mounting the main App component it fetches the API information
      */
@@ -34,6 +35,7 @@ class App extends Component {
     search(query){  //TODO - fully implement
         this.setState({selectedMission:Number(query)})
     }
+
     /*
         This method provides a loading indicator for the app while it fetches the API data
         return: jsx main body of webapp
@@ -48,6 +50,7 @@ class App extends Component {
                 <div id='loading' className='d-flex justify-content-center'> Fetching SpaceX info...</div></div>
         }
     }
+
     /*
         This adds an info card if the search query has retrieved a valid mission selection
         return: jsx information card
@@ -60,6 +63,7 @@ class App extends Component {
             return null
         }
     };
+
     render() {
         return (
             <div className='container-fluid'>
