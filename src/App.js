@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import Banner from './components/Banner.jsx'
-import SearchBar from "./components/SearchBar";
+import SearchBar from './components/SearchBar';
 
 
 class App extends Component {
@@ -13,6 +13,7 @@ class App extends Component {
             isFetched: false,
             selectedMission: null,
         };
+        this.search = this.search.bind(this)
     }
 
     componentDidMount() {
@@ -25,6 +26,9 @@ class App extends Component {
                 })
             })
     }
+    search(query){
+        this.setState({selectedMission:Number(query)})
+    }
     render() {
         let {isFetched, missionList, selectedMission} = this.state;
         if(!isFetched){
@@ -32,7 +36,21 @@ class App extends Component {
                 <div className='container-fluid'>
                     <Banner/>
                     <div id='appBody' className='container-fluid'>
-                    <div id='loading' className='d-flex justify-content-center'> Fetching SpaceX info...</div>
+                        <div id='loading' className='d-flex justify-content-center'> Fetching SpaceX info...</div>
+                    </div>
+                    <footer id='footer' className='d-flex justify-content-center'>
+                        Brought to you by&nbsp;<a id='gitHubLink' href='http://github.com/kaloianbch/'>Kal</a>
+                    </footer>
+                </div>
+            );
+        }
+        else if(selectedMission !== null){
+            return (
+                <div className='container-fluid'>
+                    <Banner/>
+                    <div id='appBody' className='container-fluid'>
+                        <SearchBar searchCallback={this.search}/>
+                        <InfoCard missionInfo={missionList[selectedMission]}/>
                     </div>
                     <footer id='footer' className='d-flex justify-content-center'>
                         Brought to you by&nbsp;<a id='gitHubLink' href='http://github.com/kaloianbch/'>Kal</a>
@@ -45,7 +63,7 @@ class App extends Component {
                 <div className='container-fluid'>
                     <Banner/>
                     <div id='appBody' className='container-fluid'>
-                        <SearchBar/>
+                        <SearchBar searchCallback={this.search}/>
                     </div>
                     <footer id='footer' className='d-flex justify-content-center'>
                         Brought to you by&nbsp;<a id='gitHubLink' href='http://github.com/kaloianbch/'>Kal</a>
