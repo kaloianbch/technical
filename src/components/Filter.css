@@ -1,0 +1,12 @@
+#filter{
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+#filterBarParent{
+    text-decoration: none;
+}
+#dropDownList{
+    height: auto;
+    max-height: 24rem;
+    overflow-x: hidden;
+}

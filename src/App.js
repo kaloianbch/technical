@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import Banner from './components/Banner.jsx'
-import SearchBar from './components/SearchBar';
+import Filter from './components/Filter';
 import InfoCard from './components/InfoCard';
 
 
