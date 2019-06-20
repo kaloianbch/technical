@@ -36,7 +36,7 @@ class SearchBar extends Component {
     render() {
         return (
             <div className='d-flex justify-content-center'>
-                <div id='searchBar' className='input-group col-5'>
+                <div id='searchBar' className='input-group col-10'>
                     <input type='text' className='form-control' placeholder='Search...' value={this.state.searchQuery}
                            onKeyUp={this.keyInputHandler} onChange={this.searchBarInputHandler}/>
                     <button type='button' className='btn btn-light' id='searchButton' onClick={this.callbackHandler}>
