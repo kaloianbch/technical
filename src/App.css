@@ -1,9 +1,12 @@
 #root{
     background-color: #0b0e16;
     color: #e7dfdd;
-    font-family: "Raleway SemiBold";
-    height:100vh;
+    font-family: 'Raleway SemiBold', sans-serif;
+    min-height:100vh;
     position:relative;
+}
+#appBody{
+    padding-bottom:4rem;
 }
 #footer{
     background-color: #e7dfdd;
@@ -18,4 +21,9 @@
 }
 #gitHubLink{
    color: #0b0e16;
+}
+#loading{
+    font-size: 3em;
+    padding-top: 2em;
+    padding-bottom: 2em;
 }
