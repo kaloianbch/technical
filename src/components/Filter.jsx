@@ -6,7 +6,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import InputGroup from 'react-bootstrap/InputGroup';
 
 /*
-    Dropdown Toggle override component that replaces default button with a search bar.
+    Dropdown Toggle override component that replaces default button with a missionSelect bar.
  */
 class FilterBar extends React.Component {
     constructor(props) {
@@ -84,9 +84,24 @@ class Filter extends Component {
     constructor(props) {
         super(props);
         this.state ={
+            missionList: null,      //list for storing API information
             filterQuery : ''
         };
         this.setFilterText = this.setFilterText.bind(this);
+        this.getBody = this.getBody.bind(this);
+    }
+
+    /*
+        On mounting the main App component it attempts fetches the API information
+     */
+    componentDidMount() {
+        fetch('https://api.spacexdata.com/v3/launches')
+            .then(response => response.json())
+            .then(responseJson => {
+                this.setState({
+                    missionList: responseJson,
+                })
+            })
     }
 
     setFilterText(text){
@@ -100,9 +115,13 @@ class Filter extends Component {
         return <Dropdown.Item onClick={() => console.log('selected')}>Placeholder</Dropdown.Item>
     }
 
-    render() {
-        return (
-            <div className='d-flex justify-content-center'>
+    /*
+        This method provides a loading indicator for the app while it fetches the API data
+        return: jsx main body of the filter component
+     */
+    getBody() {
+        if (this.state.missionList !== null) {
+            return (
                 <div id='filter' className='input-group col-10'>
                     <Dropdown className='container-fluid'>
                         <Dropdown.Toggle as={FilterBar} id='dropdown-custom-components' callback={this.setFilterText}>
@@ -113,6 +132,19 @@ class Filter extends Component {
                         </Dropdown.Menu>
                     </Dropdown>
                 </div>
+            )
+        } else {
+            return (
+                <div id='appBody' className='container-fluid'>
+                    <div id='loading' className='d-flex justify-content-center'> Fetching data from SpaceX API...</div></div>
+            )
+        }
+    }
+
+    render() {
+        return (
+            <div className='d-flex justify-content-center'>
+                {this.getBody()}
             </div>
         );
     }
