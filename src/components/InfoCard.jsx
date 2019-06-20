@@ -1,13 +1,20 @@
 import React, {Component} from 'react';
 import './InfoCard.css'
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCheckCircle} from "@fortawesome/free-solid-svg-icons/faCheckCircle";
-import {faTimesCircle} from "@fortawesome/free-solid-svg-icons/faTimesCircle";
-import {faInfoCircle} from "@fortawesome/free-solid-svg-icons/faInfoCircle";
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faCheckCircle} from '@fortawesome/free-solid-svg-icons/faCheckCircle';
+import {faTimesCircle} from '@fortawesome/free-solid-svg-icons/faTimesCircle';
+import {faInfoCircle} from '@fortawesome/free-solid-svg-icons/faInfoCircle';
 
 class InfoCard extends Component {
-    imgLoad(imgSource) {    //TODO - add null alternative
-        return <img id='cardImg' className='rounded' alt='Failed to Load Image' src={imgSource}/>
+    imgLoad(imgSource) {    //TODO - static div height
+        if(imgSource[0] !== undefined) {
+            return <div id='cardImgContrainer' className='col-md-4'>
+                <img id='cardImg' className='rounded' alt='Failed to Load Image' src={imgSource[0]}/>
+            </div>
+        }
+        else {
+            return null
+        }
     }
     dateConvert(unixTimeStamp){
         let date = new Date(unixTimeStamp * 1000);
@@ -33,9 +40,7 @@ class InfoCard extends Component {
                 <div id='infoCard' className='card col-11 justify-content-center'>
                     <div className='container-fluid'>
                         <div className='row'>
-                            <div className='col-md-4'>
-                               {this.imgLoad(missionInfo.links.flickr_images[0])}
-                            </div>
+                            {this.imgLoad(missionInfo.links.flickr_images)}
                             <div id='infoRowOne' className='col-md-4 fa-border'>
                                 <ul>
                                     <li>Payload: {missionInfo.rocket.second_stage.payloads[0].payload_id}
