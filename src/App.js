@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './App.css';
 import Banner from './components/Banner.jsx'
 import SearchBar from './components/SearchBar';
+import InfoCard from './components/InfoCard';
 
 
 class App extends Component {

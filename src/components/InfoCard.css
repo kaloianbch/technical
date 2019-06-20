@@ -1,0 +1,20 @@
+#infoCard{
+    background-color: #e7dfdd;
+    color: #0b0e16;
+    font-size: small;
+    font-family: "Droid Serif", sans-serif;
+    padding: 1rem;
+}
+#cardImg{
+    width: 100%;
+}
+#infoRowOne{
+    border-right: none;
+}
+#infoRowTwo{
+    border-left: none;
+    padding-right: 1rem;
+}
+#missionDesc{
+    margin-top: 1rem;
+}
