@@ -1,9 +1,14 @@
 #infoCard{
     background-color: #e7dfdd;
     color: #0b0e16;
-    font-size: small;
+    font-size: x-small;
     font-family: "Droid Serif", sans-serif;
     padding: 1rem;
+}
+#cardImgContainer{
+    display:block;
+    width:100%;
+    max-height:70px;
 }
 #cardImg{
     width: 100%;
