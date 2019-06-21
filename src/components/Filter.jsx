@@ -4,11 +4,10 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faSearch} from '@fortawesome/free-solid-svg-icons/faSearch'
 import Dropdown from 'react-bootstrap/Dropdown';
 import InputGroup from 'react-bootstrap/InputGroup';
-
 /*
     Dropdown Toggle override component that replaces default button with a missionSelect bar.
  */
-class FilterBar extends React.Component {
+class FilterBar extends React.Component { //TODO - add filter options
     constructor(props) {
         super(props);
         this.state = {
@@ -53,7 +52,7 @@ class FilterBar extends React.Component {
 /*
     Dropdown menu override component that produces a list only of elements containing the provided string prop
  */
-class FilterMenu extends React.Component {
+class FilterMenu extends React.Component {  //TODO - stylize
     constructor(props) {
         super(props);
     }
@@ -120,10 +119,27 @@ class Filter extends Component {
             </Dropdown.Item>
         );
     }
+
     passSelectedMission(missionInfo){
         if(this.props.filterCallback !== undefined){
+            missionInfo.rocket.first_stage.cores.forEach((coreItem) =>{
+                coreItem.other_flights = this.findOtherFlights(coreItem.core_serial, missionInfo.flight_number);
+            });
+            console.log(missionInfo);
             this.props.filterCallback(missionInfo);
         }
+    }
+
+    findOtherFlights(serial, missionId){
+        let otherFlights = [];
+        this.state.missionList.forEach((missionItem) =>{
+            missionItem.rocket.first_stage.cores.forEach((coreItem) =>{
+                if(coreItem.core_serial === serial && missionItem.flight_number !== missionId){
+                    otherFlights.push({flight_number: missionItem.flight_number, mission_name: missionItem.mission_name})
+                }
+            })
+        });
+        return otherFlights;
     }
 
     /*

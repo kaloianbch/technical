@@ -8,7 +8,7 @@ import InfoCard from './components/InfoCard';
     The main App component renders the banner and footer, and after the API fetch is complete also a filter bar for the
     list provided by the API. When an item is selected it passed to an InfoCard component.
  */
-class App extends Component {
+class App extends Component {   //TODO - find proper documentation tool for React
     constructor(props){
         super(props);
 
