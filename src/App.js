@@ -3,6 +3,7 @@ import './App.css';
 import Banner from './components/Banner.jsx'
 import Filter from './components/Filter';
 import InfoCard from './components/InfoCard';
+import Video from "./components/Video";
 
 /*
     The main App component renders the banner and footer, and after the API fetch is complete also a filter bar for the
@@ -31,6 +32,10 @@ class App extends Component {   //TODO - find proper documentation tool for Reac
         if(this.state.selectedMission !== undefined){
             return <div>
                 <InfoCard id='infoCard' missionInfo={this.state.selectedMission}/>
+                {(this.state.selectedMission.links.youtube_id !== null)?
+                    <Video link ={'https://www.youtube.com/embed/' + this.state.selectedMission.links.youtube_id}/>
+                    : <span></span>
+                }
             </div>
         }
         else  {
