@@ -1,19 +1,31 @@
-# Qmee Technical Test
+# SpaceXplore
 
-![](https://farm5.staticflickr.com/4891/39745614053_43855205bc_o.jpg)
+A visualisation webapp for the SpaceX API(v3).
 
-Using any language/framework/library, consume the [SpaceX-API v3](https://github.com/r-spacex/SpaceX-API) and implement a simple web app with a UI to display a list of launches. At a minimum it should also have the ability to view details of a specific launch.
+## Getting Started
 
-## Bonus
+This project is written in React.js using the Node.js Package Manager for dependency management. To set up this project make sure you have the latest version of npm and run the following command:
+```npm install```
+## Running the Project
+Run ```npm start``` in the command line.
+## Running the tests
+Run ```npm test``` in the command line.
+## Deployment
+The project is set up to deploy on GitHub Pages.
+To deploy run ```npm deploy```
+You can find a guide on how to deploy React.js web applications on GitHub Pages here [here](https://facebook.github.io/create-react-app/docs/deployment#github-pages-https-pagesgithubcom).
+## Built With
 
-- No design guidelines are given, but making use of images provided by the API is a plus
-- Using [React](https://reactjs.org/) is a plus (a good starting point is https://github.com/facebook/create-react-app)
-- Building an interesting feature using the data is a plus
+* [React](http://www.dropwizard.io/1.0.2/docs/) 
+* [Bootstrap 4](https://getbootstrap.com/) 
+* [React-Bootstrap](https://react-bootstrap.netlify.com) 
+* [React-FontAwesome](https://github.com/FortAwesome/react-fontawesome) 
+* [npm](https://www.npmjs.com) 
 
-## Example endpoints
+## Authors
 
-- All launches: `https://api.spacexdata.com/v3/launches`
-- Latest launch: `https://api.spacexdata.com/v3/launches/latest`
-- Specific launch `https://api.spacexdata.com/v3/launches/67`
+* **Kaloian Chokanov** -  [kaloianbch](https://github.com/kaloianbch)
 
-[Full API Documentation](https://documenter.getpostman.com/view/2025350/RWaEzAiG)
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
